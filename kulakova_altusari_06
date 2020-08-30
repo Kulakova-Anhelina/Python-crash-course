@@ -59,7 +59,8 @@ def read_data():
     except ValueError:
         print("Please enter the values in correct format")
     else:
-        users.append({'name': name, 'age': age, 'weight': weight, 'height': height, 'activity': activity})
+        new_user = {'name': name, 'age': age, 'weight': weight, 'height': height, 'activity': activity}
+        users.append(new_user)
         filename = 'journal.txt'
         with open(filename, 'w') as file_object:
             file_object.write("User: " + name + ', age: ' + str(age) + ', weight: ' + str(weight) + ', height: ' +
@@ -75,3 +76,8 @@ answer = ''
 while answer != 'no':
     read_data()
     answer = input("Would you like to continue? Type 'yes' or 'no'")
+
+for user_dict in users:
+    for k, v in user_dict.items():
+        print(k + ": " + str(v))
+print("\n")
